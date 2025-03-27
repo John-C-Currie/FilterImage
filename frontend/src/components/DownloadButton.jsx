@@ -2,7 +2,7 @@ function DownloadButton() {
     return (
         <button
             onClick={() => {
-                console.log('Download button clicked!')
+                console.log("Image downloaded");
             }}
         >
             Download
