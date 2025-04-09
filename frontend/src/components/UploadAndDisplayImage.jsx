@@ -1,15 +1,47 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios"; // Import axios for HTTP requests
 
-const UploadAndDisplayImage = () => {
+const UploadAndDisplayImage = ({ selectedFilter }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const fileInputRef = useRef(null); // Ref to access file input
+  const [processedImage, setProcessedImage] = useState(null); // State for processed image
+  const fileInputRef = useRef(null);
 
   const handleRemove = () => {
-    setSelectedImage(null); // Remove image from state
+    setSelectedImage(null);
+    setProcessedImage(null); // Clear processed image
     if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // Reset file input
+      fileInputRef.current.value = "";
     }
   };
+
+  const processImage = async () => {
+    if (!selectedImage || selectedFilter === "none") return;
+
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+    formData.append("filter", selectedFilter);
+
+    try {
+      // POST request to send the image and filter
+      const response = await axios.post("http://localhost:8000/api/process-image/", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      // GET request to retrieve the processed image
+      const processedImageResponse = await axios.get("http://localhost:8000/api/processed-image/", {
+        responseType: "blob",
+      });
+
+      setProcessedImage(URL.createObjectURL(processedImageResponse.data));
+    } catch (error) {
+      console.error("Error processing image:", error);
+    }
+  };
+
+  // Trigger processImage whenever selectedFilter changes
+  useEffect(() => {
+    processImage();
+  }, [selectedFilter]);
 
   return (
     <div>
@@ -18,31 +50,29 @@ const UploadAndDisplayImage = () => {
           <img
             alt="Uploaded Preview"
             width={"250px"}
-            src={URL.createObjectURL(selectedImage)}
+            src={processedImage || URL.createObjectURL(selectedImage)}
           />
           <br /> <br />
-          {/* Download button */}
           <a
-            href={URL.createObjectURL(selectedImage)}
+            href={processedImage || URL.createObjectURL(selectedImage)}
             download={selectedImage.name || "downloaded-image"}
           >
             <button>Download</button>
           </a>
           &nbsp;
-          {/* Remove button */}
           <button onClick={handleRemove}>Remove</button>
         </div>
       )}
 
       <br />
 
-      {/* File input field with ref */}
       <input
         type="file"
         name="myImage"
         ref={fileInputRef}
         onChange={(event) => {
           setSelectedImage(event.target.files[0]);
+          setProcessedImage(null); // Reset processed image
         }}
       />
     </div>

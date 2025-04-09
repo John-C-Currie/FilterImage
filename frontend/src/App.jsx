@@ -1,28 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import DownloadButton from './components/DownloadButton'
-import UploadAndDisplayImage from './components/UploadAndDisplayImage'
-import ImagePreview from './components/ImagePreview'
-import FilterDropdown from './components/FilterDropdown'
-import './App.css'
+import { useState } from "react";
+import UploadAndDisplayImage from "./components/UploadAndDisplayImage";
+import FilterDropdown from "./components/FilterDropdown";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedFilter, setSelectedFilter] = useState("none");
+
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+  };
 
   return (
     <>
-        <div>
-            <UploadAndDisplayImage></UploadAndDisplayImage>
-        </div>
-        <div>
-        </div>
-        <div>
-            <FilterDropdown></FilterDropdown>
-        </div>
-
+      <div>
+        <UploadAndDisplayImage selectedFilter={selectedFilter} />
+      </div>
+      <div>
+        <FilterDropdown onFilterChange={handleFilterChange} />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
