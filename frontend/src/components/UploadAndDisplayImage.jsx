@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios"; // Import axios for HTTP requests
 
-const UploadAndDisplayImage = ({ selectedFilter }) => {
+const UploadAndDisplayImage = ({ selectedFilter, onImageRemove }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [processedImage, setProcessedImage] = useState(null); // State for processed image
   const fileInputRef = useRef(null);
@@ -12,6 +12,7 @@ const UploadAndDisplayImage = ({ selectedFilter }) => {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+    onImageRemove(); 
   };
 
   const processImage = async () => {

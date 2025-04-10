@@ -10,13 +10,21 @@ function App() {
     setSelectedFilter(filter);
   };
 
+  const resetFilter = () => {
+      setSelectedFilter("none");
+      const filterDropdown = document.querySelector("select");
+      if (filterDropdown) {
+        filterDropdown.value = "none";
+      }
+  }
+
   return (
     <>
       <div>
-        <UploadAndDisplayImage selectedFilter={selectedFilter} />
+        <UploadAndDisplayImage selectedFilter={selectedFilter} onImageRemove={resetFilter}/>
       </div>
       <div>
-        <FilterDropdown onFilterChange={handleFilterChange} />
+        <FilterDropdown onFilterChange={handleFilterChange}/>
       </div>
     </>
   );
