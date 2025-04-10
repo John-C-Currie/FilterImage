@@ -15,7 +15,7 @@ const UploadAndDisplayImage = ({ selectedFilter }) => {
   };
 
   const processImage = async () => {
-    if (!selectedImage || selectedFilter === "none") return;
+    if (!selectedImage) return;
 
     const formData = new FormData();
     formData.append("image", selectedImage);
