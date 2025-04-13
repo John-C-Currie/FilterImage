@@ -1,0 +1,86 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.sqlite3
+
+# Virtual Environment
+venv/
+env/
+
+# Django static and media files
+/staticfiles/
+media/
+
+# Logs
+*.log
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Node.js (if Node.js is used in the backend)
+node_modules/
+dist/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*.swp
+*.swo
+*.~*
+
+# Compiled files
+*.so
+*.dll
+*.dylib
+*.class
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Pipenv and Poetry
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Sphinx documentation
+docs/_build/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
