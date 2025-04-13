@@ -9,19 +9,19 @@ if [ -z "$PROJECT_MAIN_DIR_NAME" ]; then
     exit 1
 fi
 
-# Change ownership to unbuntu user
-sudo chown -R unbuntu:unbuntu "/home/unbuntu/$PROJECT_MAIN_DIR_NAME"
+# Change ownership to ubuntu user
+sudo chown -R ubuntu:ubuntu "/home/ubuntu/$PROJECT_MAIN_DIR_NAME"
 
 # Create virtual environment
 echo "Creating virtual environment..."
-virtualenv "/home/unbuntu/$PROJECT_MAIN_DIR_NAME/venv"
+virtualenv "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv"
 
 # Activate virtual environment
 echo "Activating virtual environment..."
-source "/home/unbuntu/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
+source "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
 
 # Install dependencies
 echo "Installing Python dependencies..."
-pip install -r "/home/unbuntu/$PROJECT_MAIN_DIR_NAME/requirements.txt"
+pip install -r "/home/ubuntu/$PROJECT_MAIN_DIR_NAME/requirements.txt"
 
 echo "Dependencies installed successfully."
