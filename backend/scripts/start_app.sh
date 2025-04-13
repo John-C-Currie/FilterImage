@@ -9,15 +9,15 @@ if [ -z "$PROJECT_MAIN_DIR_NAME" ]; then
     exit 1
 fi
 
-# Change ownership to ec2-user user
-sudo chown -R ec2-user:ec2-user "/home/ec2-user/$PROJECT_MAIN_DIR_NAME"
+# Change ownership to unbuntu user
+sudo chown -R unbuntu:unbuntu "/home/unbuntu/$PROJECT_MAIN_DIR_NAME"
 
 # Change directory to the project main directory
-cd "/home/ec2-user/$PROJECT_MAIN_DIR_NAME"
+cd "/home/unbuntu/$PROJECT_MAIN_DIR_NAME"
 
 # Activate virtual environment
 echo "Activating virtual environment..."
-source "/home/ec2-user/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
+source "/home/unbuntu/$PROJECT_MAIN_DIR_NAME/venv/bin/activate"
 
 # Run collectstatic command
 echo "Running collectstatic command..."

@@ -13,13 +13,13 @@ sudo systemctl daemon-reload
 sudo rm -f /etc/nginx/sites-enabled/default
 
 # Copy Nginx configuration file
-sudo cp "/home/ec2-user/$PROJECT_MAIN_DIR_NAME/nginx/nginx.conf" "/etc/nginx/sites-available/$FOLDER_NAME_WHERE_SETTINGS_FILE_EXISTS"
+sudo cp "/home/unbuntu/$PROJECT_MAIN_DIR_NAME/nginx/nginx.conf" "/etc/nginx/sites-available/$FOLDER_NAME_WHERE_SETTINGS_FILE_EXISTS"
 
 # Create symbolic link to enable Nginx site
 sudo ln -s "/etc/nginx/sites-available/$FOLDER_NAME_WHERE_SETTINGS_FILE_EXISTS" "/etc/nginx/sites-enabled/"
 
 # Add www-data user to ubuntu group
-sudo gpasswd -a www-data ec2-user
+sudo gpasswd -a www-data unbuntu
 
 # Restart Nginx service
 sudo systemctl restart nginx

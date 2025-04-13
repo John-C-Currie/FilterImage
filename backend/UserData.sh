@@ -2,7 +2,7 @@
 set -e
 
 # Replace {YOUR_GIT_REOPO_URL} with your actual Git repository URL
-GIT_REPO_URL="https://github.com/John-C-Currie/FilterImage.git"
+GIT_REPO_URL="https://github.com/John-C-Currie/FilterImage"
 
 # If using Private Repo
 #GIT_REPO_URL="https://<your_username>:<your_PAT>@github.com/codewithmuh/django-aws-ec2-autoscaling.git"
@@ -11,9 +11,9 @@ GIT_REPO_URL="https://github.com/John-C-Currie/FilterImage.git"
 PROJECT_MAIN_DIR_NAME="FilterImage/backend"
 
 # Clone repository
-git clone "$GIT_REPO_URL" "/home/ec2-user/$PROJECT_MAIN_DIR_NAME"
+git clone "$GIT_REPO_URL" "/home/ubuntu/$PROJECT_MAIN_DIR_NAME"
 
-cd "/home/ec2-user/$PROJECT_MAIN_DIR_NAME"
+cd "/home/ubuntu/$PROJECT_MAIN_DIR_NAME"
 
 # Make all .sh files executable
 chmod +x scripts/*.sh
