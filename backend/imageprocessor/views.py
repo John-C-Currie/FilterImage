@@ -29,7 +29,6 @@ def process_image(request):
 
         image = Image.open(image_file)
 
-        # Apply filters
         if filter_type == 'gray':
             image = ImageOps.grayscale(image)
         elif filter_type == 'sepia':
@@ -44,7 +43,6 @@ def process_image(request):
         elif filter_type == 'solar':
             image = ImageOps.solarize(image, threshold=128)
 
-        # Save processed image
         processed_image_path = os.path.join('media', 'processed_image.png')
         image.save(processed_image_path)
 
