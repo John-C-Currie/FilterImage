@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterDropdown = ({ onFilterChange }) => {
   const handleChange = (event) => {
-    onFilterChange(event.target.value); // Notify parent of filter change
+    onFilterChange(event.target.value);
   };
 
   return (

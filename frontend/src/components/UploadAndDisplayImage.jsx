@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios"; // Import axios for HTTP requests
+import axios from "axios";
 
 const UploadAndDisplayImage = ({ selectedFilter, onImageRemove }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [processedImage, setProcessedImage] = useState(null); // State for processed image
+  const [processedImage, setProcessedImage] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleRemove = () => {
     setSelectedImage(null);
-    setProcessedImage(null); // Clear processed image
+    setProcessedImage(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -39,7 +39,6 @@ const UploadAndDisplayImage = ({ selectedFilter, onImageRemove }) => {
     }
   };
 
-  // Trigger processImage whenever selectedFilter changes
   useEffect(() => {
     processImage();
   }, [selectedFilter]);
@@ -73,7 +72,7 @@ const UploadAndDisplayImage = ({ selectedFilter, onImageRemove }) => {
         ref={fileInputRef}
         onChange={(event) => {
           setSelectedImage(event.target.files[0]);
-          setProcessedImage(null); // Reset processed image
+          setProcessedImage(null);
         }}
       />
     </div>

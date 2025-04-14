@@ -3,10 +3,20 @@ from django.http import JsonResponse, FileResponse
 from django.views.decorators.csrf import csrf_exempt
 from PIL import Image, ImageFilter, ImageOps
 import io, base64
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.conf import settings
+
 
 processed_image_path = None
 
+
 @csrf_exempt
+def index(request):
+    index_path = os.path.join('/home/ubuntu/FilterImage/frontend/dist', 'index.html')
+    with open(index_path, 'r') as file:
+        return HttpResponse(file.read())
+
 @csrf_exempt
 def process_image(request):
     global processed_image_path
