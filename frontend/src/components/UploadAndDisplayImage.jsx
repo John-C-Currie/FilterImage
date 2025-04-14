@@ -24,12 +24,12 @@ const UploadAndDisplayImage = ({ selectedFilter, onImageRemove }) => {
 
     try {
       // POST request to send the image and filter
-      const response = await axios.post("http://localhost:8000/api/process-image/", formData, {
+      const response = await axios.post("http://3.137.142.127:8000/api/process-image/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       // GET request to retrieve the processed image
-      const processedImageResponse = await axios.get("http://localhost:8000/api/processed-image/", {
+      const processedImageResponse = await axios.get("http://localhost3.137.142.127:8000/api/processed-image/", {
         responseType: "blob",
       });
 
